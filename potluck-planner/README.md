@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+�� Product Vision Document 
+This is the template for the Product Vision Document that you'll complete as a team at the beginning of Build Week. The PVD is crucial to the planning phase and is mandatory for all groups to complete. 
+If you prefer to work in Google Docs, you can make a copy of the document here. ☝ Proposal 
+What problem does your app solve? 
+Makes it easier to organize potluck dinners with multiple persons by allowing collaboration via a single app.
+Be as specific as possible; how does your app solve the problem?
+By providing a single source of information that can be edited ‘on the fly’ and allows for RSVP
+ What is the mission statement? 
+Bring people together with simple and fast planning and collaboration.
+�� Features 
+What features are required for your minimum viable product?
+As an organizer I can create an upcoming potluck and invite my friends to attend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+As an organizer I can adjust dates, times and locations of the potluck
 
-In the project directory, you can run:
 
-### `npm start`
+As an organizer I can use the list feature in my app to add food items that we'd like to see at the potluck
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+As a guest to a potluck I want to be able to confirm that I'm going to the upcoming event
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+As a guest I'd like to be able to select which items I'd like to be responsible for bringing
+Product Vision Document 1 
+What features may you wish to put in a future release? 
+Add a reminders functionality that allows users to link up their upcoming dates to their Google calendar.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Ability to upload multiple photos from the potluck gathering, like a photo gallery for a past event.
+What do the top 3 similar apps do for their users? 
+Facebook events - Events can be created by anyone, and can be open to anyone or private. The creator can invite his friends, members of a group, or fans of a page
+SplitWise - track costs and split balances amongst groups
+Asana - create tasks for the event with due dates and assign these to your team members, manage guest lists, create event timelines and track through your smartphone.
+�� Frameworks - Libraries 
+What 3rd party frameworks/libraries are you considering using? 
+React
+Axios
+Express
+Knex
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Do the APIs you need require you to contact them to gain access? NO
+Are you required to pay to use said API(s)? NO
+�� For Data Scientists 
+Describe the established data source with at least rough data able to be provided on day one. 
+Write a description for what the data science problem is. What uncertainty or prediction are you trying to discover? How could this data be used to find a solution to this problem? 
+What kind of target output can you deliver to the Web/UX/iOS teams to work with? Is it in JSON format or something else? 
+�� Target Audience 
+Who is your target audience? Be specific. 
+People who like other people and also food
+What feedback have you gotten from potential users? 
+Have you validated this problem and your solution with a target audience? Describe how. 
+�� Prototype Key Feature(s) 
+How long do you think it will take to implement these features? 
+5-7 days
+Product Vision Document 2 
+Do you anticipate working on stretch functionality after completion of a Minimal Viable Product?
+Yes
+Product Vision Document 3 
