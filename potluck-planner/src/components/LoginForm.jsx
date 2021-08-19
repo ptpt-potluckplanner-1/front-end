@@ -8,4 +8,4 @@ export default LoginForm;
 
 //username
 //password
-//organizer ? t/f
+//isOrganizer
