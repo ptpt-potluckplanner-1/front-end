@@ -15,8 +15,8 @@
 	// 	],
 	// 	"description": "Log output to console"
 	// }
-	"Insert TestID": {
-		"scope": "javascript, typescript",
+	"Insert Test ID": {
+		"scope": "javascript, typescript, javascriptreact",
 		"prefix": "testid",
 		"body": "data-testid='${1:component}'"
 	}
