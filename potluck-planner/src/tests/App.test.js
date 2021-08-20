@@ -1,8 +1,11 @@
-import { render, screen } from '@testing-library/react';
-import App from '../App';
+import { render, screen } from "@testing-library/react";
+import App from "../App";
 
-test('renders learn react link', () => {
+test("renders App", () => {
+  // arrange
   render(<App />);
-  const linkElement = screen.getByTestId(/app/i);
-  expect(linkElement).toBeInTheDocument();
+  // act
+  const app = screen.getByTestId(/app/i);
+  // assert
+  expect(app).toBeInTheDocument();
 });

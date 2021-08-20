@@ -1,8 +1,11 @@
-import { screen, render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import LoginForm from "../components/LoginForm";
 
-test("renders LoginForm component", () => {
+test("renders LoginForm", () => {
+  // arrange
   render(<LoginForm />);
-  const loginForm = screen.getByTestId("loginForm");
+  // act
+  const loginForm = screen.getByTestId(/loginForm/i);
+  // assert
   expect(loginForm).toBeInTheDocument();
 });

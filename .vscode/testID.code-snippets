@@ -15,22 +15,9 @@
 	// 	],
 	// 	"description": "Log output to console"
 	// }
-	"Render Test": {
+	"Insert TestID": {
 		"scope": "javascript, typescript",
-		"prefix": "test",
-		"body": [
-			"import { render, screen } from '@testing-library/react';",
-			"import ${1:Component} from '../components/${1:Component}';",
-			"",
-			"test('renders ${1:Component}', () => {",
-			"// arrange",
-			"render(<${1:Component} />);",
-			"// act",
-			"const ${3:component} = screen.getByTestId(/${3:component}/i);",
-			"// assert",
-			"expect(${3:component}).toBeInTheDocument();",
-			"$0",
-			"});",
-		]
+		"prefix": "testid",
+		"body": "data-testid='${1:component}'"
 	}
 }

@@ -1,8 +1,11 @@
-import { render, screen } from '@testing-library/react';
-import EventForm from '../components/EventForm';
+import { render, screen } from "@testing-library/react";
+import EventForm from "../components/EventForm";
 
-test('renders EventForm', () => {
-render(<EventForm />);
-const eventForm  = screen.getByTestId(/eventForm/i);
-expect(eventForm).toBeInTheDocument();
+test("renders EventForm", () => {
+  // arrange
+  render(<EventForm />);
+  // act
+  const eventForm = screen.getByTestId(/eventForm/i);
+  // assert
+  expect(eventForm).toBeInTheDocument();
 });
