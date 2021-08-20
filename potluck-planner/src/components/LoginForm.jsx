@@ -1,7 +1,7 @@
 import React from 'react';
 
 const LoginForm = () => {
-    return ( <div>LoginForm</div> );
+    return ( <div data-testid='loginForm' >LoginForm</div> );
 }
  
 export default LoginForm;
