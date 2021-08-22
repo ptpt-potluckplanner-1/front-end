@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import * as yup from "yup";
 import axios from 'axios';
+import { date } from 'yup/lib/locale';
 
 const LoginForm = () => {
 
@@ -14,7 +15,7 @@ const LoginForm = () => {
     const [disabled , setDisabled ] = useState(true)
 
     // Keep user   
-    const [user, setUser] = useState({ username:"", password:"", isOrganizer: "", agree: false, });
+    const [user, setUser] = useState({ id:"", username:"", password:"", isOrganizer: "", agree: false, });
 
     // Keep errors   
     const [errors, setErrors] = useState({ username:"", password:"", isOrganizer: "", agree: "", });
@@ -50,13 +51,14 @@ const LoginForm = () => {
     },[user]);
 
     const submitFc = (e) =>{
-        setUsers([...users,user]);
+        const NewUser ={...user, id: date.now()}
+        setUsers([...users,NewUser]);
         e.preventDefault();  
         axios
-          .post("https://reqres.in/api/users", user)
+          .post("https://reqres.in/api/users", NewUser)
           .then(response => {
             setPost(response.data);
-            setUser({ username:"", password:"", isOrganizer: "", agree: false, });
+            setUser({ id:"", username:"", password:"", isOrganizer: "", agree: false, });
           })
           .catch(err => {
             console.log(err);

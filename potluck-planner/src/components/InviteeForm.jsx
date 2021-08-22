@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import * as yup from 'yup';
 import axios from 'axios';
+import { date } from 'yup/lib/locale';
 
 const InviteeForm = () => {
 
@@ -14,7 +15,7 @@ const InviteeForm = () => {
     const [disabled , setDisabled ] = useState(true)
 
    // Keep invitees
-    const [invitee, setInvitee] = useState({ event:"", name:"", bring:"", agree: false,});
+    const [invitee, setInvitee] = useState({ id: "", event:"", name:"", bring:"", agree: false,});
     // Keep errors   
     const [errors, setErrors] = useState({ event:"", name:"", bring:"", agree:"",});
 
@@ -50,14 +51,15 @@ const InviteeForm = () => {
                 inviteeSchema.isValid(invitee).then(valid => setDisabled(!valid))
             },[invitee]);
     
-            const submitFc = (e) =>{
-                setInvitees([...invitees,invitee]);
+    const submitFc = (e) =>{
+                const NewInvitee = {...invitee, id: date.now()}
+                setInvitees([...invitees,NewInvitee]);
                 e.preventDefault();  
                 axios
-                  .post("https://reqres.in/api/users", invitee)
+                  .post("https://reqres.in/api/users", NewInvitee)
                   .then(response => {
                     setPost(response.data);
-                    setInvitee({ event:"", name:"", bring:"", agree: false,});
+                    setInvitee({ id: "", event:"", name:"", bring:"", agree: false,});
                   })
                   .catch(err => {
                     console.log(err);

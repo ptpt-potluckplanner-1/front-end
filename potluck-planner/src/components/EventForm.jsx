@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
+import {Link, Route} from 'react-router-dom';
 import * as yup from 'yup';
 import axios from 'axios';
+import Events from './Events';
 
 const EventForm = () => {
     
@@ -11,7 +13,7 @@ const EventForm = () => {
     const [eventPost, seteventPost] = useState();
 
      // Keep events
-    const [event, setEvent] = useState({  eventname:"", location:"", date:"", agree:false,});
+    const [event, setEvent] = useState({ id:"", eventname:"", location:"", date:"", agree:false,});
     // Keep errors   
     const [errors, setErrors] = useState({  eventname:"", location:"", date:"", agree:"",});
 
@@ -50,54 +52,73 @@ const EventForm = () => {
         },[event]);
     
     const submitFc = (e) =>{
-            setEvents([...events,event]);
+            const NewEvent = {...event, id: Date.now()}
+
+            setEvents([...events,NewEvent]); /// add id
             e.preventDefault();  
             axios
-              .post("https://reqres.in/api/users", event)
+              .post("https://reqres.in/api/users", NewEvent)
               .then(response => {
                 seteventPost(response.data);
-                setEvent({eventname:"", location:"", date:"", agree:false,});
+                setEvent({id: "", eventname:"", location:"", date:"", agree:false,});
               })
               .catch(err => {
                 console.log(err);
               });
         }
 
+       
     return ( 
+        <div>
+            
+            <div>
+                <form onSubmit ={submitFc}> 
+                    <label htmlFor='eventname'> Pick a name for your event </label>
+                    <br></br>
+                    <input id = 'eventname' name = 'eventname' value = {event.eventname} type = 'text' onChange={changeFc} />
+                    <br></br><br></br>
+                    {errors.eventname.length > 0 ? <p style ={{color:'red'}} >{errors.eventname}</p> : null}
 
-    <div>
-    <form onSubmit ={submitFc}> 
-        <label htmlFor='eventname'> Pick a name for your event </label>
-        <br></br>
-        <input id = 'eventname' name = 'eventname' value = {event.eventname} type = 'text' onChange={changeFc} />
-        <br></br><br></br>
-        {errors.eventname.length > 0 ? <p style ={{color:'red'}} >{errors.eventname}</p> : null}
+                    <label htmlFor='location'> Where is the event taking place ? </label>
+                    <br></br>
+                    <input id = 'location' name = 'location' value = {event.location} type = 'text' onChange={changeFc} />
+                    <br></br><br></br>
+                    {errors.location.length > 0 ? <p style ={{color:'red'}} >{errors.location}</p> : null}
 
-        <label htmlFor='location'> Where is the event taking place ? </label>
-        <br></br>
-        <input id = 'location' name = 'location' value = {event.location} type = 'text' onChange={changeFc} />
-        <br></br><br></br>
-        {errors.location.length > 0 ? <p style ={{color:'red'}} >{errors.location}</p> : null}
+                    <label htmlFor='date'> When is the event taking place? </label>
+                    <br></br>
+                    <input id = 'date' name = 'date' type = 'datetime-local' value = {event.date} onChange={changeFc}/>
+                    <br></br><br></br>
+                    {errors.date.length > 0 ? <p style ={{color:'red'}} >{errors.date}</p> : null}
 
-        <label htmlFor='date'> When is the event taking place? </label>
-        <br></br>
-        <input id = 'date' name = 'date' type = 'datetime-local' value = {event.date} onChange={changeFc}/>
-        <br></br><br></br>
-        {errors.date.length > 0 ? <p style ={{color:'red'}} >{errors.date}</p> : null}
+                    <label> Are you all set ?
+                            <input name = 'agree' type = 'checkbox' checked ={event.agree} onChange={changeFc}/>
+                            </label>
+                            <br></br><br></br>
+                            {errors.agree.length > 0 ? <p style ={{color:'red'}} >{errors.agree}</p> : null}
 
-        <label> Are you all set ?
-                <input name = 'agree' type = 'checkbox' checked ={event.agree} onChange={changeFc}/>
-                </label>
+                    <button  disabled ={disabled} type ="submit"> Start Planning!</button>
+
+                    <pre>{JSON.stringify(eventPost,null,2)}</pre>
+
+                    
+
+                </form>
+
+            </div> 
+
+            <div className="App">
+                
+                <h4> Check ongoing events</h4>
                 <br></br><br></br>
-                {errors.agree.length > 0 ? <p style ={{color:'red'}} >{errors.agree}</p> : null}
+                <Events eventslist={events}/>
 
-        <button  disabled ={disabled} type ="submit"> Start Planning!</button>
-
-        <pre>{JSON.stringify(eventPost,null,2)}</pre>
-
-    </form>
-        
-    </div> );
+                {/* <Link to="/listevents"> Ongoing events </Link> */}
+                {/* <Route exact path ="/listevents"   render={() => <Events eventslist={events}/>}/> */}
+                
+            </div>
+        </div>
+    );
 }
  
 export default EventForm;
