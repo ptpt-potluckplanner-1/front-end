@@ -1,7 +1,7 @@
 import React from 'react';
 
 const InviteeForm = () => {
-    return ( <div>InviteeForm Component</div> );
+    return ( <div data-testid='inviteeForm' >InviteeForm Component</div> );
 }
  
 export default InviteeForm;
