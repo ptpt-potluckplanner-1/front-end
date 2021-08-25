@@ -21,9 +21,9 @@ function App() {
        </nav>
        <Switch>
           <Route exact path="/" />
-          <Route path="/loginform"   component ={LoginForm}/>
-          <Route path="/eventform"   component ={EventForm}/>
-          <Route path="/inviteeform" component ={InviteeForm}/>
+          <Route path="/loginform"   component = {LoginForm}   />
+          <Route path="/eventform"   component = {EventForm}   />
+          <Route path="/inviteeform" component = {InviteeForm} />
        </Switch>
 
 

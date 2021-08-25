@@ -15,7 +15,7 @@ const LoginForm = () => {
     const [disabled , setDisabled ] = useState(true)
 
     // Keep user   
-    const [user, setUser] = useState({ id:"", username:"", password:"", isOrganizer: "", agree: false, });
+    const [user, setUser] = useState({ id:"", username:"", password:"", isOrganizer: false, agree: false, });
 
     // Keep errors   
     const [errors, setErrors] = useState({ username:"", password:"", isOrganizer: "", agree: "", });
@@ -23,7 +23,7 @@ const LoginForm = () => {
     const userSchema = yup.object().shape({
             username: yup.string().required("User name is required").min(2, "The name must have at more than two letters"),
             password:yup.string().required("Create a password").min(6, "The password must have more than six characters"),
-            isOrganizer: yup.string().required("Are you an organizer or an invitee? ").oneOf(['true','false']),
+            isOrganizer: yup.boolean(),
             agree: yup.boolean().oneOf([true], "You must accept Terms and Conditions"),
         })
 
@@ -58,7 +58,7 @@ const LoginForm = () => {
           .post("https://reqres.in/api/users", NewUser)
           .then(response => {
             setPost(response.data);
-            setUser({ id:"", username:"", password:"", isOrganizer: "", agree: false, });
+            setUser({ id:"", username:"", password:"", isOrganizer: false, agree: false, });
           })
           .catch(err => {
             console.log(err);
@@ -83,13 +83,10 @@ const LoginForm = () => {
                 <br></br><br></br>
                 {errors.password.length > 0 ? <p style ={{color:'red'}} >{errors.password}</p> : null}
 
-            <label> I am an organizer 
-                    <input name = 'isOrganizer' value = 'true' type = 'radio' checked ={user.isOrganizer === 'true'} onChange={changeFc}/>
+                <label> I am an organizer 
+                    <input name = 'isOrganizer'  type = 'checkbox' checked ={user.isOrganizer} onChange={changeFc}/>
                 </label>
-
-                <label> I am an Invitee
-                    <input name = 'isOrganizer' value = 'false' type = 'radio' checked ={user.isOrganizer === 'false'} onChange={changeFc}/>
-                </label>
+       
                 <br></br><br></br>
                 {errors.isOrganizer.length > 0 ? <p style ={{color:'red'}} >{errors.isOrganizer}</p> : null}
 
@@ -100,6 +97,8 @@ const LoginForm = () => {
                 {errors.agree.length > 0 ? <p style ={{color:'red'}} >{errors.agree}</p> : null}
 
                 <button  disabled ={disabled} type ="submit"> Join potlock planner!</button>
+                <br></br><br></br>
+                <button   type ="submit"> Log In !</button>
 
                 <pre>{JSON.stringify(post,null,2)}</pre>
 
