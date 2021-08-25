@@ -1,5 +1,4 @@
 # front-end
-<<<<<<< tests
 
 ## Running the app
 + cd into /potluck-planner
@@ -12,6 +11,3 @@
 This assumes that your file structure keeps the components in ```/components``` and the tests in `/tests`
 * use the snippet "`testid`" to add ```data-testid="component"``` to the component's topmost element and replace `"component"` with the name of the component you are testing, this will be the name 'test' looks for.
 * now you can write a simple test in about 2 seconds, yay snippets!
-=======
-see README.md in /potluck-planner
->>>>>>> main
