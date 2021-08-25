@@ -4,6 +4,7 @@ import axios from 'axios';
 import { date } from 'yup/lib/locale';
 
 const InviteeForm = () => {
+<<<<<<< HEAD
 
     // Keep array of events
     const [invitees, setInvitees] = useState([]);
@@ -100,4 +101,9 @@ const InviteeForm = () => {
         </div> );
     }
     
+=======
+    return ( <div data-testid='inviteeForm' >InviteeForm Component</div> );
+}
+ 
+>>>>>>> main
 export default InviteeForm;

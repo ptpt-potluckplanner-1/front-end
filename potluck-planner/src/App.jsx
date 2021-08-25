@@ -8,6 +8,7 @@ import LoginForm from './components/LoginForm.jsx';
 
 function App() {
   return (
+<<<<<<< HEAD
     <div className="App">
        <nav>
          <h1>Welcome to Potluck Planner</h1>
@@ -28,6 +29,10 @@ function App() {
 
 
 
+=======
+    <div data-testid='app' className="App">
+      App Component
+>>>>>>> main
     </div>
   );
 }

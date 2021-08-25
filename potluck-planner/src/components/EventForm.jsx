@@ -5,6 +5,7 @@ import axios from 'axios';
 import Events from './Events';
 
 const EventForm = () => {
+<<<<<<< HEAD
     
     // Keep array of events
     const [events, setEvents] = useState([]);
@@ -119,6 +120,9 @@ const EventForm = () => {
             </div>
         </div>
     );
+=======
+    return ( <div data-testid='eventForm' >EventForm Component</div> );
+>>>>>>> main
 }
  
 export default EventForm;

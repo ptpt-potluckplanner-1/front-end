@@ -4,6 +4,7 @@ import axios from 'axios';
 import { date } from 'yup/lib/locale';
 
 const LoginForm = () => {
+<<<<<<< HEAD
 
     // Keep array of users
     const [users, setUsers] = useState([]);
@@ -106,6 +107,10 @@ const LoginForm = () => {
             
         </div> );
     }
+=======
+    return ( <div data-testid='loginform'  >LoginForm</div> );
+}
+>>>>>>> main
  
 export default LoginForm;
 
