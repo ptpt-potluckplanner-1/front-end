@@ -4,7 +4,6 @@ import axios from 'axios';
 import { date } from 'yup/lib/locale';
 
 const LoginForm = () => {
-<<<<<<< HEAD
 
     // Keep array of users
     const [users, setUsers] = useState([]);
@@ -49,7 +48,7 @@ const LoginForm = () => {
 
     useEffect(()=>{
         userSchema.isValid(user).then(valid => setDisabled(!valid))
-    },[user]);
+    },[user, userSchema]);
 
     const submitFc = (e) =>{
         const NewUser ={...user, id: date.now()}
@@ -70,7 +69,7 @@ const LoginForm = () => {
     return ( 
 
         <div>
-            <form onSubmit={submitFc}>
+            <form onSubmit={submitFc} data-testid='LoginForm' >
 
                 <label htmlFor='username'> Tell us your name </label>
                 <br></br>
@@ -107,10 +106,6 @@ const LoginForm = () => {
             
         </div> );
     }
-=======
-    return ( <div data-testid='loginform'  >LoginForm</div> );
-}
->>>>>>> main
  
 export default LoginForm;
 
