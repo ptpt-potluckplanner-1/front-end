@@ -3,7 +3,7 @@ import {Link, Route,Switch} from 'react-router-dom';
 import EventForm from './components/EventForm.jsx';
 import InviteeForm from './components/InviteeForm.jsx';
 import LoginForm from './components/LoginForm.jsx';
-
+import UserAccount from './components/UserAccount.jsx';
 
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
          </div>
        </nav>
        <Switch>
-          <Route exact path="/" />
+          <Route exact path="/" component ={UserAccount} />
           <Route path="/loginform"   component = {LoginForm}   />
           <Route path="/eventform"   component = {EventForm}   />
           <Route path="/inviteeform" component = {InviteeForm} />

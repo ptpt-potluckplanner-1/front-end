@@ -98,7 +98,7 @@ const LoginForm = () => {
 
                 <button  disabled ={disabled} type ="submit"> Join potlock planner!</button>
                 <br></br><br></br>
-                <button   type ="submit"> Log In !</button>
+                
 
                 <pre>{JSON.stringify(post,null,2)}</pre>
 

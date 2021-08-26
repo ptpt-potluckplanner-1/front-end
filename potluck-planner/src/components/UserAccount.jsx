@@ -21,8 +21,8 @@ const UserAccount = () => {
     const [errors, setErrors] = useState({ username:"", password:"", });
 
     const userSchema = yup.object().shape({
-            username: yup.string().required("User name is required")
-            password:yup.string().required("Create a password")
+            username: yup.string().required("User name is required"),
+            password:yup.string().required("Create a password"),
 
         })
 
@@ -64,7 +64,6 @@ const UserAccount = () => {
           });
     }
 
-
     return ( 
 
         <div>
@@ -83,9 +82,8 @@ const UserAccount = () => {
                 {errors.password.length > 0 ? <p style ={{color:'red'}} >{errors.password}</p> : null}
 
 
-                <button  disabled ={disabled} type ="submit"> Join potlock planner!</button>
+                <button  disabled ={disabled} type ="submit"> Log In!</button>
                 <br></br><br></br>
-                <button   type ="submit"> Log In !</button>
 
                 <pre>{JSON.stringify(post,null,2)}</pre>
 
