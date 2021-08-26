@@ -3,9 +3,9 @@ import * as yup from "yup";
 import axios from 'axios';
 import { date } from 'yup/lib/locale';
 
-const LoginForm = () => {
+const UserAccount = () => {
 
-    // Keep array of users
+    // Get array of users
     const [users, setUsers] = useState([]);
 
     // Post
@@ -15,16 +15,15 @@ const LoginForm = () => {
     const [disabled , setDisabled ] = useState(true)
 
     // Keep user   
-    const [user, setUser] = useState({ id:"", username:"", password:"", isOrganizer: false, }); // agree: false, 
+    const [user, setUser] = useState({ id:"", username:"", password:"",  });
 
     // Keep errors   
-    const [errors, setErrors] = useState({ username:"", password:"", isOrganizer: "",  }); //agree: "",
+    const [errors, setErrors] = useState({ username:"", password:"", });
 
     const userSchema = yup.object().shape({
-            username: yup.string().required("User name is required").min(2, "The name must have at more than two letters"),
-            password:yup.string().required("Create a password").min(6, "The password must have more than six characters"),
-            isOrganizer: yup.boolean(),
-            // agree: yup.boolean().oneOf([true], "You must accept Terms and Conditions"),
+            username: yup.string().required("User name is required")
+            password:yup.string().required("Create a password")
+
         })
 
 
@@ -51,20 +50,20 @@ const LoginForm = () => {
     },[user]);
 
     const submitFc = (e) =>{
-        const NewUser ={...user, id: date.now()}
-        setUsers([...users,NewUser]);
         e.preventDefault();  
         axios
-          .post("https://potluckplanner-backend.herokuapp.com/api/auth/register", NewUser)
+          .get("https://potluckplanner-backend.herokuapp.com/api/auth/login")
           .then(response => {
-            setPost(response.data);
-            setUser({ id:"", username:"", password:"", isOrganizer: false,  }); // agree: false,
+            setUsers(response.data);
+            // Validate if user is in the array of users
+            // 
+            // setUser({ id:"", username:"", password:"" });
           })
           .catch(err => {
             console.log(err);
           });
-
     }
+
 
     return ( 
 
@@ -83,18 +82,6 @@ const LoginForm = () => {
                 <br></br><br></br>
                 {errors.password.length > 0 ? <p style ={{color:'red'}} >{errors.password}</p> : null}
 
-                <label> I am an organizer 
-                    <input name = 'isOrganizer'  type = 'checkbox' checked ={user.isOrganizer} onChange={changeFc}/>
-                </label>
-       
-                <br></br><br></br>
-                {errors.isOrganizer.length > 0 ? <p style ={{color:'red'}} >{errors.isOrganizer}</p> : null}
-
-                {/* <label> Terms and conditions
-                <input type = 'checkbox' name ="agree" checked={user.agree} onChange={changeFc} />
-                </label>
-                <br></br><br></br>
-                {errors.agree.length > 0 ? <p style ={{color:'red'}} >{errors.agree}</p> : null} */}
 
                 <button  disabled ={disabled} type ="submit"> Join potlock planner!</button>
                 <br></br><br></br>
@@ -109,7 +96,7 @@ const LoginForm = () => {
     // return ( <div data-testid='loginform'  >LoginForm</div> );
 // }
  
-export default LoginForm;
+export default UserAccount;
 
 //username
 //password

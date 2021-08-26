@@ -4,7 +4,6 @@ import axios from 'axios';
 import { date } from 'yup/lib/locale';
 
 const InviteeForm = () => {
-<<<<<<< HEAD
 
     // Keep array of events
     const [invitees, setInvitees] = useState([]);
@@ -87,7 +86,7 @@ const InviteeForm = () => {
                 <textarea id = 'bring' name = 'bring' type = 'text' value =  {invitee.bring}  onChange={changeFc}/>
                 <br></br><br></br>
 
-                <label> Review info befor joining ...
+                <label> Review info before joining ...
                     <input name = 'agree' type = 'checkbox' checked ={invitee.agree} onChange={changeFc} />
                     </label>
                     <br></br><br></br>
@@ -101,9 +100,7 @@ const InviteeForm = () => {
         </div> );
     }
     
-=======
-    return ( <div data-testid='inviteeForm' >InviteeForm Component</div> );
-}
+    // return ( <div data-testid='inviteeForm' >InviteeForm Component</div> );
+
  
->>>>>>> main
 export default InviteeForm;

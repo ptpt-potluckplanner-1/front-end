@@ -5,7 +5,6 @@ import axios from 'axios';
 import Events from './Events';
 
 const EventForm = () => {
-<<<<<<< HEAD
     
     // Keep array of events
     const [events, setEvents] = useState([]);
@@ -58,7 +57,7 @@ const EventForm = () => {
             setEvents([...events,NewEvent]); /// add id
             e.preventDefault();  
             axios
-              .post("https://reqres.in/api/users", NewEvent)
+              .post("https://potluckplanner-backend.herokuapp.com/api/organizer/potluck", NewEvent)
               .then(response => {
                 seteventPost(response.data);
                 setEvent({id: "", eventname:"", location:"", date:"", agree:false,});
@@ -120,9 +119,7 @@ const EventForm = () => {
             </div>
         </div>
     );
-=======
     return ( <div data-testid='eventForm' >EventForm Component</div> );
->>>>>>> main
 }
  
 export default EventForm;
