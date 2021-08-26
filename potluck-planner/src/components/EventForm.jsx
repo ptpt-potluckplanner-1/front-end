@@ -101,20 +101,11 @@ const EventForm = () => {
 
                     <pre>{JSON.stringify(eventPost,null,2)}</pre>
 
-                    
-
                 </form>
 
             </div> 
 
             <div className="App">
-                
-                <h4> Check ongoing events</h4>
-                <br></br><br></br>
-                <Events eventslist={events}/>
-
-                {/* <Link to="/listevents"> Ongoing events </Link> */}
-                {/* <Route exact path ="/listevents"   render={() => <Events eventslist={events}/>}/> */}
                 
             </div>
         </div>

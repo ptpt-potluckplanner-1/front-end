@@ -4,6 +4,7 @@ import EventForm from './components/EventForm.jsx';
 import InviteeForm from './components/InviteeForm.jsx';
 import LoginForm from './components/LoginForm.jsx';
 import UserAccount from './components/UserAccount.jsx';
+import Events from './components/Events.jsx';
 
 
 function App() {
@@ -16,14 +17,17 @@ function App() {
           <Link to="/loginform"> Log In </Link>
           <Link to="/eventform"> Create an Event </Link>
           <Link to="/inviteeform"> Join event </Link>
+          <Link to="/listevents"> Ongoing events </Link>
+                
     
          </div>
        </nav>
        <Switch>
-          <Route exact path="/" component ={UserAccount} />
-          <Route path="/loginform"   component = {LoginForm}   />
-          <Route path="/eventform"   component = {EventForm}   />
-          <Route path="/inviteeform" component = {InviteeForm} />
+          <Route exact path="/"        component ={UserAccount} />
+          <Route path="/loginform"     component = {LoginForm}   />
+          <Route path="/eventform"     component = {EventForm}   />
+          <Route path="/inviteeform"   component = {InviteeForm} />
+          <Route path ="/listevents"   component={Events} />
        </Switch>
 
 
