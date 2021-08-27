@@ -3,6 +3,7 @@ import {Link, Route} from 'react-router-dom';
 import * as yup from 'yup';
 import axios from 'axios';
 import Events from './Events';
+import {BASE_URL} from '../constants/constants'
 
 const EventForm = () => {
     
@@ -13,19 +14,20 @@ const EventForm = () => {
     const [eventPost, seteventPost] = useState();
 
      // Keep events
-    const [event, setEvent] = useState({ id:"", eventname:"", location:"", date:"", agree:false,});
+    const [event, setEvent] = useState({ organizer_id:"", title:"", location:"", date:"", time:""});
     // Keep errors   
-    const [errors, setErrors] = useState({  eventname:"", location:"", date:"", agree:"",});
+    const [errors, setErrors] = useState({ title:"", location:"", date:"", time:"",});
 
     // Disable submit button initially
     const [disabled , setDisabled ] = useState(true)
 
 
     const eventSchema = yup.object().shape({
-            eventname: yup.string().required("Event name is required").min(2, "The event must have at more than two letters"),
+            title: yup.string().required("Event name is required").min(2, "The event must have at more than two letters"),
             location:yup.string().required("Create a Event location is required").min(2, "Location must have more than six characters"),
             date: yup.date().required("Must enter date"),
-            agree: yup.boolean().oneOf([true], "You must accept Terms and Conditions") 
+            time: yup.string().required("start time cannot be empty")
+
             
         })  
         
@@ -51,16 +53,16 @@ const EventForm = () => {
             eventSchema.isValid(event).then(valid => setDisabled(!valid))
         },[event]);
     
-    const submitFc = (e) =>{
-            const NewEvent = {...event, id: Date.now()}
+    const submitFc = (e) =>{ 
+            const NewEvent = {...event, organizer_id: Date.now()} // GREG FIX THIS NOW PLEASEEEEEE WITH ORGANIZER_ID
 
             setEvents([...events,NewEvent]); /// add id
             e.preventDefault();  
             axios
-              .post("https://potluckplanner-backend.herokuapp.com/api/organizer/potluck", NewEvent)
+              .post(`${BASE_URL}//organizer/potluck`, NewEvent)
               .then(response => {
                 seteventPost(response.data);
-                setEvent({id: "", eventname:"", location:"", date:"", agree:false,});
+                setEvent({organizer_id: "", title:"", location:"", date:"", time:"" ,});
               })
               .catch(err => {
                 console.log(err);
@@ -75,9 +77,9 @@ const EventForm = () => {
                 <form onSubmit ={submitFc}> 
                     <label htmlFor='eventname'> Pick a name for your event </label>
                     <br></br>
-                    <input id = 'eventname' name = 'eventname' value = {event.eventname} type = 'text' onChange={changeFc} />
+                    <input id = 'eventname' name = 'title' value = {event.title} type = 'text' onChange={changeFc} />
                     <br></br><br></br>
-                    {errors.eventname.length > 0 ? <p style ={{color:'red'}} >{errors.eventname}</p> : null}
+                    {errors.title.length > 0 ? <p style ={{color:'red'}} >{errors.title}</p> : null}
 
                     <label htmlFor='location'> Where is the event taking place ? </label>
                     <br></br>
@@ -87,15 +89,15 @@ const EventForm = () => {
 
                     <label htmlFor='date'> When is the event taking place? </label>
                     <br></br>
-                    <input id = 'date' name = 'date' type = 'datetime-local' value = {event.date} onChange={changeFc}/>
+                    <input id = 'date' name = 'date' type = 'date' value = {event.date} onChange={changeFc}/>
                     <br></br><br></br>
                     {errors.date.length > 0 ? <p style ={{color:'red'}} >{errors.date}</p> : null}
 
-                    <label> Are you all set ?
-                            <input name = 'agree' type = 'checkbox' checked ={event.agree} onChange={changeFc}/>
-                            </label>
-                            <br></br><br></br>
-                            {errors.agree.length > 0 ? <p style ={{color:'red'}} >{errors.agree}</p> : null}
+                    <label htmlFor='time'> Whhat time? </label>
+                    <br></br>
+                    <input id = 'time' name = 'time' type = 'time' value = {event.time} onChange={changeFc}/>
+                    <br></br><br></br>
+                    {errors.time.length > 0 ? <p style ={{color:'red'}} >{errors.time}</p> : null}
 
                     <button  disabled ={disabled} type ="submit"> Start Planning!</button>
 

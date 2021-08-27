@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import * as yup from "yup";
 import axios from 'axios';
 import { date } from 'yup/lib/locale';
+import {BASE_URL} from '../constants/constants'
 
 const UserAccount = () => {
 
@@ -15,7 +16,7 @@ const UserAccount = () => {
     const [disabled , setDisabled ] = useState(true)
 
     // Keep user   
-    const [user, setUser] = useState({ id:"", username:"", password:"",  });
+    const [user, setUser] = useState({ username:"", password:"",  });
 
     // Keep errors   
     const [errors, setErrors] = useState({ username:"", password:"", });
@@ -47,17 +48,16 @@ const UserAccount = () => {
 
     useEffect(()=>{
         userSchema.isValid(user).then(valid => setDisabled(!valid))
-    },[user]);
+    },[userSchema,user]);
 
     const submitFc = (e) =>{
         e.preventDefault();  
         axios
-          .get("https://potluckplanner-backend.herokuapp.com/api/auth/login")
+        .post(`${BASE_URL}/auth/login`,user)
           .then(response => {
             setUsers(response.data);
-            // Validate if user is in the array of users
-            // 
-            // setUser({ id:"", username:"", password:"" });
+            setUser({ username:"", password:"", }); 
+
           })
           .catch(err => {
             console.log(err);

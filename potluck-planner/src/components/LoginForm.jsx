@@ -15,20 +15,18 @@ const LoginForm = () => {
     const [disabled , setDisabled ] = useState(true)
 
     // Keep user   
-    const [user, setUser] = useState({ id:"", username:"", password:"", organizer: false, }); // agree: false, 
+    const [user, setUser] = useState({username:"", password:"", organizer: false, }); 
 
     // Keep errors   
-    const [errors, setErrors] = useState({ username:"", password:"", organizer: "",  }); //agree: "",
+    const [errors, setErrors] = useState({ username:"", password:"", organizer: "",  }); 
 
     const userSchema = yup.object().shape({
             username: yup.string().required("User name is required").min(2, "The name must have at more than two letters"),
             password:yup.string().required("Create a password").min(6, "The password must have more than six characters"),
             organizer: yup.boolean(),
-            // agree: yup.boolean().oneOf([true], "You must accept Terms and Conditions"),
+        
         })
 
-
-    // Set feedback from errors
     const setFormErrors = (name,value) =>{
             yup.reach(userSchema, name).validate(value)
             .then(valid => { setErrors({...errors, [name]: ""});
@@ -48,17 +46,17 @@ const LoginForm = () => {
 
     useEffect(()=>{
         userSchema.isValid(user).then(valid => setDisabled(!valid))
-    },[user]);
+    },[userSchema,user]);
 
     const submitFc = (e) =>{
-        const NewUser ={...user, id: date.now()}
+        const NewUser ={...user}
         setUsers([...users,NewUser]);
         e.preventDefault();  
         axios
           .post("https://potluckplanner-backend.herokuapp.com/api/auth/register", NewUser)
           .then(response => {
             setPost(response.data);
-            setUser({ id:"", username:"", password:"", organizer: false,  }); // agree: false,
+            setUser({ username:"", password:"", organizer: false,  }); 
           })
           .catch(err => {
             console.log(err);
@@ -90,17 +88,10 @@ const LoginForm = () => {
                 <br></br><br></br>
                 {errors.organizer.length > 0 ? <p style ={{color:'red'}} >{errors.organizer}</p> : null}
 
-                {/* <label> Terms and conditions
-                <input type = 'checkbox' name ="agree" checked={user.agree} onChange={changeFc} />
-                </label>
-                <br></br><br></br>
-                {errors.agree.length > 0 ? <p style ={{color:'red'}} >{errors.agree}</p> : null} */}
-
                 <button  disabled ={disabled} type ="submit"> Join potlock planner!</button>
                 <br></br><br></br>
                 
-
-                <pre>{JSON.stringify(post,null,2)}</pre>
+                {/* <pre>{JSON.stringify(post,null,2)}</pre> */}
 
             </form>
             
