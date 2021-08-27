@@ -15,15 +15,15 @@ const LoginForm = () => {
     const [disabled , setDisabled ] = useState(true)
 
     // Keep user   
-    const [user, setUser] = useState({ id:"", username:"", password:"", isOrganizer: false, }); // agree: false, 
+    const [user, setUser] = useState({ id:"", username:"", password:"", organizer: false, }); // agree: false, 
 
     // Keep errors   
-    const [errors, setErrors] = useState({ username:"", password:"", isOrganizer: "",  }); //agree: "",
+    const [errors, setErrors] = useState({ username:"", password:"", organizer: "",  }); //agree: "",
 
     const userSchema = yup.object().shape({
             username: yup.string().required("User name is required").min(2, "The name must have at more than two letters"),
             password:yup.string().required("Create a password").min(6, "The password must have more than six characters"),
-            isOrganizer: yup.boolean(),
+            organizer: yup.boolean(),
             // agree: yup.boolean().oneOf([true], "You must accept Terms and Conditions"),
         })
 
@@ -58,7 +58,7 @@ const LoginForm = () => {
           .post("https://potluckplanner-backend.herokuapp.com/api/auth/register", NewUser)
           .then(response => {
             setPost(response.data);
-            setUser({ id:"", username:"", password:"", isOrganizer: false,  }); // agree: false,
+            setUser({ id:"", username:"", password:"", organizer: false,  }); // agree: false,
           })
           .catch(err => {
             console.log(err);
@@ -84,11 +84,11 @@ const LoginForm = () => {
                 {errors.password.length > 0 ? <p style ={{color:'red'}} >{errors.password}</p> : null}
 
                 <label> I am an organizer 
-                    <input name = 'isOrganizer'  type = 'checkbox' checked ={user.isOrganizer} onChange={changeFc}/>
+                    <input name = 'organizer'  type = 'checkbox' checked ={user.organizer} onChange={changeFc}/>
                 </label>
        
                 <br></br><br></br>
-                {errors.isOrganizer.length > 0 ? <p style ={{color:'red'}} >{errors.isOrganizer}</p> : null}
+                {errors.organizer.length > 0 ? <p style ={{color:'red'}} >{errors.organizer}</p> : null}
 
                 {/* <label> Terms and conditions
                 <input type = 'checkbox' name ="agree" checked={user.agree} onChange={changeFc} />
