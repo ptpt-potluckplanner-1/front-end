@@ -2,10 +2,11 @@ import React, {useState, useEffect} from 'react';
 import * as yup from "yup";
 import axios from 'axios';
 import { date } from 'yup/lib/locale';
+import {BASE_URL} from '../constants/constants'
 
-const LoginForm = () => {
+const UserAccount = () => {
 
-    // Keep array of users
+    // Get array of users
     const [users, setUsers] = useState([]);
 
     // Post
@@ -15,18 +16,19 @@ const LoginForm = () => {
     const [disabled , setDisabled ] = useState(true)
 
     // Keep user   
-    const [user, setUser] = useState({username:"", password:"", organizer: false, }); 
+    const [user, setUser] = useState({ username:"", password:"",  });
 
     // Keep errors   
-    const [errors, setErrors] = useState({ username:"", password:"", organizer: "",  }); 
+    const [errors, setErrors] = useState({ username:"", password:"", });
 
     const userSchema = yup.object().shape({
-            username: yup.string().required("User name is required").min(2, "The name must have at more than two letters"),
-            password:yup.string().required("Create a password").min(6, "The password must have more than six characters"),
-            organizer: yup.boolean(),
-        
+            username: yup.string().required("User name is required"),
+            password:yup.string().required("Create a password"),
+
         })
 
+
+    // Set feedback from errors
     const setFormErrors = (name,value) =>{
             yup.reach(userSchema, name).validate(value)
             .then(valid => { setErrors({...errors, [name]: ""});
@@ -48,27 +50,24 @@ const LoginForm = () => {
         userSchema.isValid(user).then(valid => setDisabled(!valid))
     },[userSchema,user]);
 
-
     const submitFc = (e) =>{
-        const NewUser ={...user}
-        setUsers([...users,NewUser]);
         e.preventDefault();  
         axios
-          .post("https://potluckplanner-backend.herokuapp.com/api/auth/register", NewUser)
+        .post(`${BASE_URL}/auth/login`,user)
           .then(response => {
-            setPost(response.data);
-            setUser({ username:"", password:"", organizer: false,  }); 
+            setUsers(response.data);
+            setUser({ username:"", password:"", }); 
+
           })
           .catch(err => {
             console.log(err);
           });
-
     }
 
     return ( 
 
         <div>
-            <form onSubmit={submitFc} data-testid='LoginForm' >
+            <form onSubmit={submitFc}>
 
                 <label htmlFor='username'> Tell us your name </label>
                 <br></br>
@@ -82,28 +81,20 @@ const LoginForm = () => {
                 <br></br><br></br>
                 {errors.password.length > 0 ? <p style ={{color:'red'}} >{errors.password}</p> : null}
 
-                <label> I am an organizer 
-                    <input name = 'organizer'  type = 'checkbox' checked ={user.organizer} onChange={changeFc}/>
-                </label>
-       
-                <br></br><br></br>
-                {errors.organizer.length > 0 ? <p style ={{color:'red'}} >{errors.organizer}</p> : null}
 
-                <button  disabled ={disabled} type ="submit"> Join potlock planner!</button>
+                <button  disabled ={disabled} type ="submit"> Log In!</button>
                 <br></br><br></br>
-                
-                {/* <pre>{JSON.stringify(post,null,2)}</pre> */}
+
+                <pre>{JSON.stringify(post,null,2)}</pre>
 
             </form>
             
         </div> );
     }
-
     // return ( <div data-testid='loginform'  >LoginForm</div> );
 // }
-
  
-export default LoginForm;
+export default UserAccount;
 
 //username
 //password
