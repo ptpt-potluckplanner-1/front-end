@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import * as yup from "yup";
 import axios from 'axios';
 import { date } from 'yup/lib/locale';
+import '../main.css'
 
 const LoginForm = () => {
 
@@ -66,7 +67,7 @@ const LoginForm = () => {
 
     return ( 
 
-        <div>
+        <div className = "form-style"  >
             <form onSubmit={submitFc}>
 
                 <label htmlFor='username'> Tell us your name </label>
@@ -88,7 +89,7 @@ const LoginForm = () => {
                 <br></br><br></br>
                 {errors.organizer.length > 0 ? <p style ={{color:'red'}} >{errors.organizer}</p> : null}
 
-                <button  disabled ={disabled} type ="submit"> Join potlock planner!</button>
+                <button className="button-style" disabled ={disabled} type ="submit"> Join potlock planner!</button>
                 <br></br><br></br>
                 
                 {/* <pre>{JSON.stringify(post,null,2)}</pre> */}

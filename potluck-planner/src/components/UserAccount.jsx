@@ -3,6 +3,7 @@ import * as yup from "yup";
 import axios from 'axios';
 import { date } from 'yup/lib/locale';
 import {BASE_URL} from '../constants/constants'
+import '../main.css'
 
 const UserAccount = () => {
 
@@ -66,7 +67,7 @@ const UserAccount = () => {
 
     return ( 
 
-        <div>
+        <div className = "form-style" >
             <form onSubmit={submitFc}>
 
                 <label htmlFor='username'> Tell us your name </label>
@@ -82,7 +83,7 @@ const UserAccount = () => {
                 {errors.password.length > 0 ? <p style ={{color:'red'}} >{errors.password}</p> : null}
 
 
-                <button  disabled ={disabled} type ="submit"> Log In!</button>
+                <button className="button-style" disabled ={disabled} type ="submit"> Log In!</button>
                 <br></br><br></br>
 
                 <pre>{JSON.stringify(post,null,2)}</pre>

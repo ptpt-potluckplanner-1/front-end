@@ -4,6 +4,7 @@ import * as yup from 'yup';
 import axios from 'axios';
 import Events from './Events';
 import {BASE_URL} from '../constants/constants'
+import '../main.css'
 
 const EventForm = () => {
     
@@ -71,7 +72,7 @@ const EventForm = () => {
 
        
     return ( 
-        <div>
+        <div className = "form-style" >
             
             <div>
                 <form onSubmit ={submitFc}> 
@@ -93,13 +94,13 @@ const EventForm = () => {
                     <br></br><br></br>
                     {errors.date.length > 0 ? <p style ={{color:'red'}} >{errors.date}</p> : null}
 
-                    <label htmlFor='time'> Whhat time? </label>
+                    <label htmlFor='time'> What time? </label>
                     <br></br>
                     <input id = 'time' name = 'time' type = 'time' value = {event.time} onChange={changeFc}/>
                     <br></br><br></br>
                     {errors.time.length > 0 ? <p style ={{color:'red'}} >{errors.time}</p> : null}
 
-                    <button  disabled ={disabled} type ="submit"> Start Planning!</button>
+                    <button className="button-style" disabled ={disabled} type ="submit"> Start Planning!</button>
 
                     <pre>{JSON.stringify(eventPost,null,2)}</pre>
 
@@ -107,9 +108,9 @@ const EventForm = () => {
 
             </div> 
 
-            <div className="App">
+            {/* <div className="App">
                 
-            </div>
+            </div> */}
         </div>
     );
     return ( <div data-testid='eventForm' >EventForm Component</div> );

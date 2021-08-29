@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import * as yup from 'yup';
 import axios from 'axios';
 import { date } from 'yup/lib/locale';
-
+8
 const InviteeForm = () => {
 
     // Keep array of events
@@ -38,7 +38,7 @@ const InviteeForm = () => {
             setErrors({...errors, [name]: err.errors[0]});
         });
     }
-
+90
 
     const changeFc = e =>{
                 e.persist(); // pass event into validate function

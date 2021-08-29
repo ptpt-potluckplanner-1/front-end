@@ -1,0 +1,53 @@
+html {
+    font-size: 62.5%;
+	font-family: 'Lucida Console', monospace;
+    color: #FAEBD7;
+    background-image: url("https://image.shutterstock.com/z/stock-photo-events-word-background-on-wood-blocks-concept-business-lifestyle-education-1758451016.jpg");
+}
+
+.main-div {
+    font-size:2em;
+    
+}
+h1 {
+	letter-spacing: 1%;
+	text-align: center;
+}
+.div-nav-bar {
+    font-size: 1em;
+    text-align: center;
+}
+
+.nav-bar {
+    font-size: 1.2em;
+	letter-spacing: 0.25em;
+    padding: 2em  0em ;
+    background-color: #f4511e;
+    margin: 1%  
+    
+}
+
+.nav-link{
+    
+    padding-left: 2em;  
+    color: white;
+    text-decoration: none;
+	color: white;
+	opacity: 0.6;
+	/* border-radius: 20%; */
+}
+
+.nav-link:hover {
+	opacity: 1
+}
+
+.form-style {
+    text-align:center;
+    padding: 15%;
+    font-size: 1.5em;
+}
+
+.button-style {
+    font-size: 0.9em;
+    font-family: 'Lucida Console', monospace;
+}
