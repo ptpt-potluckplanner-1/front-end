@@ -48,6 +48,7 @@ const LoginForm = () => {
         userSchema.isValid(user).then(valid => setDisabled(!valid))
     },[userSchema,user]);
 
+
     const submitFc = (e) =>{
         const NewUser ={...user}
         setUsers([...users,NewUser]);
@@ -67,7 +68,7 @@ const LoginForm = () => {
     return ( 
 
         <div>
-            <form onSubmit={submitFc}>
+            <form onSubmit={submitFc} data-testid='LoginForm' >
 
                 <label htmlFor='username'> Tell us your name </label>
                 <br></br>
@@ -97,8 +98,10 @@ const LoginForm = () => {
             
         </div> );
     }
+
     // return ( <div data-testid='loginform'  >LoginForm</div> );
 // }
+
  
 export default LoginForm;
 
