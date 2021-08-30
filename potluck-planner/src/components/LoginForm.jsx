@@ -77,7 +77,7 @@ const LoginForm = () => {
     const NewUser = { ...user };
     setUsers([...users, NewUser]);// I don't understand what's going on here. It looks like NewUser is getting added to the app instead of to the database
     axios
-      .post(`${BASE_URL}/auth/login`, NewUser)// was this supposed to be a signup form?
+      .post(`${BASE_URL}/auth/register`, NewUser)// was this supposed to be a signup form?
       .then((response) => {
         console.log(response.data);
         setUser(initialUserState);
