@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, {useState, useEffect} from 'react';
 import * as yup from 'yup';
 import axios from 'axios';
@@ -49,7 +50,7 @@ const InviteeForm = () => {
     
     useEffect(()=>{
                 inviteeSchema.isValid(invitee).then(valid => setDisabled(!valid))
-            },[invitee]);
+            },[invitee, inviteeSchema]);
     
     const submitFc = (e) =>{
                 const NewInvitee = {...invitee, id: date.now()}
@@ -69,7 +70,7 @@ const InviteeForm = () => {
         return ( 
 
         <div>
-            <form onSubmit ={submitFc}>
+            <form onSubmit ={submitFc} data-testid='InviteeForm' >
 
                 <label htmlFor='event'> Which event do you plan to attend ? </label>
                 <br></br>
@@ -100,7 +101,4 @@ const InviteeForm = () => {
         </div> );
     }
     
-    // return ( <div data-testid='inviteeForm' >InviteeForm Component</div> );
-
- 
 export default InviteeForm;
