@@ -4,6 +4,7 @@ import * as yup from "yup";
 import axios from "axios";
 // deleted unused reference
 import { BASE_URL } from "../constants/constants";
+import '../main.css'
 
 const EventForm = () => {
   // Keep array of events
@@ -100,7 +101,7 @@ const EventForm = () => {
   };
 
   return (
-    <form data-testid='eventform' onSubmit={submitFc}>
+    <form data-testid='eventform' onSubmit={submitFc} className = "form-style" >
       <label htmlFor="eventname"> Pick a name for your event </label>
       <br />
       <input
@@ -161,7 +162,7 @@ const EventForm = () => {
         <p style={{ color: "red" }}>{errors.time}</p>
       ) : null}
 
-      <button disabled={disabled} type="submit">
+      <button className="button-style" disabled={disabled} type="submit">
         {" "}
         Start Planning!
       </button>
