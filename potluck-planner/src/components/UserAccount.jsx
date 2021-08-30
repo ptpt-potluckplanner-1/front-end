@@ -3,6 +3,7 @@ import * as yup from "yup";
 import axios from "axios";
 // deleted unused import
 import { BASE_URL } from "../constants/constants";
+import '../main.css'
 
 const UserAccount = () => {
   // Get array of users
@@ -72,7 +73,7 @@ const UserAccount = () => {
   };
   return (
     <div data-testid="loginform">
-      <form onSubmit={submitFc}>
+      <form onSubmit={submitFc} className = "form-style">
         <label htmlFor="username"> Tell us your name </label>
         <br></br>
         <input
@@ -102,7 +103,7 @@ const UserAccount = () => {
           <p style={{ color: "red" }}>{errors.password}</p>
         ) : null}
 
-        <button disabled={disabled} type="submit">
+        <button className="button-style" disabled={disabled} type="submit">
           {" "}
           Log In!
         </button>

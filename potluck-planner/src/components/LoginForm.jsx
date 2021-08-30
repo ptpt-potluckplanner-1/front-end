@@ -3,6 +3,7 @@ import * as yup from "yup";
 import axios from "axios";
 import { BASE_URL } from "../constants/constants";
 // deleted unused import
+import '../main.css'
 
 const LoginForm = () => {
   // Keep array of users
@@ -89,7 +90,7 @@ const LoginForm = () => {
 
   return (
     <div>
-      <form onSubmit={submitFc} data-testid="LoginForm">
+      <form onSubmit={submitFc} data-testid="LoginForm" className = "form-style">
         <label htmlFor="username"> Tell us your name </label>
         <br></br>
         <input
@@ -136,7 +137,7 @@ const LoginForm = () => {
           <p style={{ color: "red" }}>{errors.organizer}</p>
         ) : null}
 
-        <button disabled={disabled} type="submit">
+        <button className="button-style" disabled={disabled} type="submit">
           {" "}
           Join potlock planner!
         </button>
